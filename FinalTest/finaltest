@@ -1,0 +1,102 @@
+//1
+function totalLompat(x, y, k) {
+  const distance = y - x;
+  const jumps = Math.ceil(distance / k);
+  return jumps;
+}
+console.log("Jawaban no 1:", totalLompat(10, 85, 30)); // Output: 3
+//2
+function rotateArray(array, k) {
+  for (let i = 0; i < k; i++) {
+    const lastElement = array.pop();
+    array.unshift(lastElement);
+  }
+  return array;
+}
+const arr = [3, 8, 9, 7, 6];
+console.log("Jawaban No 2:", rotateArray(arr, 3)); // putar 3x
+//3
+
+function BandingArrays(array1, array2) {
+  const same = [];
+  const different = [];
+
+  array1.pop();
+  for (let i = 0; i < array1.length; i++) {
+    if (array2.includes(array1[i])) {
+      same.push(array1[i]);
+    } else {
+      different.push(array1[i]);
+    }
+  }
+
+  for (let i = 0; i < array2.length; i++) {
+    if (!array1.includes(array2[i])) {
+      different.push(array2[i]);
+    }
+  }
+
+  return {
+    same,
+    different,
+  };
+}
+
+const array1 = [
+  "Mangga",
+  "Apel",
+  "Melon",
+  "Pisang",
+  "Sirsak",
+  "Tomat",
+  "Nanas",
+  "Nangka",
+  "Timun",
+  "Mangga",
+];
+const array2 = [
+  "Bayam",
+  "Wortel",
+  "Kangkung",
+  "Mangga",
+  "Tomat",
+  "Kembang Kol",
+  "Nangka",
+  "Timun",
+];
+
+const result = BandingArrays(array1, array2);
+console.log("Same =", result.same);
+console.log("Different =", result.different);
+//4
+function segitiga(baris) {
+  let num = 1;
+
+  for (let i = 1; i <= baris; i++) {
+    let line = "";
+
+    for (let j = 0; j < i; j++) {
+      line += num + j + " ";
+    }
+
+    console.log(line);
+    num++;
+  }
+}
+segitiga(7);
+
+function segitiga2(baris2) {
+  let num = 5;
+
+  for (let i = 1; i <= baris2; i++) {
+    let line = "";
+
+    for (let j = 0; j < i; j++) {
+      line += num + j + " ";
+    }
+
+    console.log(line);
+    num++;
+  }
+}
+segitiga2(7);
