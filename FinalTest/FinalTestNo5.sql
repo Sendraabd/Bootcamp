@@ -46,24 +46,40 @@ Create table POLICY(
 	Constraint clientnumber_fk foreign key (client_number) references CLIENT(client_number),
 	Constraint agentcode_fk foreign key (agent_code) references AGENT(agent_code)
 );
+alter table policy alter column premium type bigint using premium::bigint
+alter table policy alter column commission type bigint using commission::bigint
 
 insert into POLICY (policy_number,policy_submit_date,premium,discount,commission,client_number,agent_code,policy_status)
-values ('001', '1/5/2018', '18.600.000.00',10,'930.000.00','CLOO1','AG001','INFORCE'),
-('002', '1/5/2018', '2.500.00.00',10,'125.000.00','CLOO2','AG002','INFORCE'),
-('003', '1/10/2018', '2.500.00.00',10,'125.000.00','CLOO3','AG003','TERMINATE'),
-('004', '1/25/2018', '4.000.00.00',10,'200.000.00','CLOO3','AG002','PROPOSAL'),
-('005', '1/25/2018', '2.625.00.00',10,'131.250.00','CLOO4','AG002','PROPOSAL')
+values ('001', '1/5/2018', '18.600.000.00',10,'930.000.00','CL001','AG001','INFORCE'),
+('002', '1/5/2018', '2.500.00.00',10,'125.000.00','CL002','AG002','INFORCE'),
+('003', '1/10/2018', '2.500.00.00',10,'125.000.00','CL003','AG003','TERMINATE'),
+('004', '1/25/2018', '4.000.00.00',10,'200.000.00','CL003','AG002','PROPOSAL'),
+('005', '1/25/2018', '2.625.00.00',10,'131.250.00','CL004','AG002','PROPOSAL')
 
 
 //5.1
-Select a.policy_submit_date, ,b.birthday
-	from policy a
- 	join agent b on b.agent_code=a.agent.code
-	join client c on c.client_number=a.client_number
-	Where policy_submit_date > '1-10-2018' ORDER BY birth_date= 9;
+SELECT a.policy_submit_date, c.birth_date
+FROM policy a
+JOIN AGENT b ON b.agent_code = a.agent_code
+JOIN CLIENT c ON c.client_number = a.client_number
+WHERE a.policy_submit_date= '2018-01-25'
+;
 //5.2
-Select a.policy_status, ,b.agent_office
-	from policy a
- 	join agent b on b.agent_code=a.agent.code
-	where policy_status = 'INFORCE' ORDER BY agent_office= 'JAKARTA';
+SELECT a.policy_status, b.agent_office
+FROM policy a
+JOIN agent b ON b.agent_code = a.agent_code
+WHERE a.policy_status = 'INFORCE'
+AND b.agent_office ='Jakarta';
 //5.3
+UPDATE AGENT SET basic_commision = commission / premium * 100;
+//5.5
+SELECT a.agent_code, a.agent_name, (p.commission / p.premium) * 100 AS basic_commission
+FROM AGENT a
+JOIN POLICY p ON p.agent_code = a.agent_code;
+//5.4
+UPDATE POLICY
+SET POLICY_DUE_DATE = DATE_TRUNC('MONTH', POLICY_SUBMIT_DATE) + INTERVAL '30 days' - INTERVAL '1 day';
+//5.5
+SELECT premium * 0.1 AS prem
+FROM POLICY
+WHERE premium - (premium * 0.1) > 1000000;
