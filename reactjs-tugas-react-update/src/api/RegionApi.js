@@ -37,6 +37,17 @@ const regionApi = {
       return error.message;
     }
   },
-};
 
+  upload: async (payload) => {
+    try {
+      const result = await axios.post(
+        `${config.domain}/region/upload`,
+        payload
+      );
+      return result;
+    } catch (error) {
+      return await error.message;
+    }
+  },
+};
 export default regionApi;

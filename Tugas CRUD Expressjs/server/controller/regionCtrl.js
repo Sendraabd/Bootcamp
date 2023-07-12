@@ -24,6 +24,7 @@ const create = async (req, res) => {
   try {
     const region = await req.context.models.regions.create({
       region_name: req.body.name,
+      photo: req.file.filename,
     });
     return res.send(region);
   } catch (error) {
@@ -36,42 +37,46 @@ const update = async (req, res) => {
     const region = await req.context.models.regions.update(
       {
         region_name: req.body.name,
+        photo: req.file.photo,
       },
       { returning: true, where: { region_id: req.params.id } }
     );
     return res.send(region);
   } catch (error) {
-    return res.send(error)
+    return res.send(error);
   }
 };
 
-const deleted = async(req,res) => {
-    try {
-        const region = await req.context.models.regions.destroy({
-            where:{region_id : req.params.id}
-        })
-        return res.send('delete '+region+' row')
-    } catch (error) {
-        return res.send(error)
-    }
-}
+const deleted = async (req, res) => {
+  try {
+    const region = await req.context.models.regions.destroy({
+      where: { region_id: req.params.id },
+    });
+    return res.send("delete " + region + " row");
+  } catch (error) {
+    return res.send(error);
+  }
+};
 
-const querySQL = async(req,res) => {
-    try {
-        await sequelize.query('select * from regions where region_id = :id',
-        {replacements : {id : req.params.id},type : sequelize.QueryTypes.SELECT}
-        ).then(result => {
-            return res.send(result)
-        })
-    } catch (error) {
-        return res.send(error)
-    }
-}
+const querySQL = async (req, res) => {
+  try {
+    await sequelize
+      .query("select * from regions where region_id = :id", {
+        replacements: { id: req.params.id },
+        type: sequelize.QueryTypes.SELECT,
+      })
+      .then((result) => {
+        return res.send(result);
+      });
+  } catch (error) {
+    return res.send(error);
+  }
+};
 export default {
   findAll,
   findOne,
   create,
   update,
   deleted,
-  querySQL
+  querySQL,
 };

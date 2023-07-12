@@ -56,7 +56,7 @@ export default class employees extends Model {
     },
     job_id: {
       type: DataTypes.STRING(10),
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'jobs',
         key: 'job_id'

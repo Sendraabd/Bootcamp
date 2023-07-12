@@ -47,20 +47,20 @@ export default function RegionViewApi() {
             <tbody>
               {region &&
                 region.map((reg) => (
-                  <tr key={reg.region_id}>
-                    <td>{reg.region_id}</td>
-                    <td>{reg.region_name}</td>
+                  <tr key={reg.regionId}>
+                    <td>{reg.regionId}</td>
+                    <td>{reg.regionName}</td>
                     <td>
                       <button
                         onClick={() => {
                           setEdit(true);
-                          setVal(reg.region_name);
-                          setId(reg.region_id);
+                          setVal(reg.regionName);
+                          setId(reg.regionId);
                         }}
                       >
                         Edit
                       </button>
-                      <button onClick={() => onDelete(reg.region_id)}>
+                      <button onClick={() => onDelete(reg.regionId)}>
                         Delete
                       </button>
                     </td>

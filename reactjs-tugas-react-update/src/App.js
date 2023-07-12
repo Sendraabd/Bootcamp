@@ -1,7 +1,8 @@
-import logo from "./logo.svg";
 import "./App.css";
-import DisplayJsx from "./DisplayJsx";
+
 import RegionViewApi from "./RegionView/RegionViewApi";
+import Route from "./Route";
+import RegionSagaView from "./ViewReduxSaga/RegionSagaView";
 
 function App() {
   return (
@@ -21,7 +22,9 @@ function App() {
         </a>
       </header> */}
       {/* <DisplayJsx /> */}
-      <RegionViewApi />
+      {/* <RegionViewApi /> */}
+      {/* <RegionSagaView /> */}
+      <Route />
     </div>
   );
 }

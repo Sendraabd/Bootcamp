@@ -14,6 +14,10 @@ export default class regions extends Model {
       type: DataTypes.STRING(25),
       allowNull: true,
       defaultValue: "NULL"
+    },
+    photo: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   }, {
     sequelize,

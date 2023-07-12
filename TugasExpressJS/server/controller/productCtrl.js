@@ -49,7 +49,7 @@ const update = async (req, res) => {
         category_id: req.body.category_id,
         quantity: req.body.quantity,
         price: req.body.price,
-        Image: req.file.Image,
+        image: req.file.filename,
         created: req.body.created,
         updated: req.body.updated,
       },
