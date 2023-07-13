@@ -5,6 +5,8 @@ import {
   GetRegionFailed,
   AddRegionSuccess,
   AddRegionFailed,
+  deleteRegionSuccess,
+  deleteRegionFailed,
 } from "../Action/RegionAction";
 
 function* handleRegion() {
@@ -25,4 +27,14 @@ function* createRegion(action) {
   }
 }
 
-export { handleRegion, createRegion };
+function* deleteRegion(action) {
+  const { id } = action;
+  try {
+    const result = yield call(RegionApi.deleted, id);
+    yield put(deleteRegionSuccess(result.data));
+  } catch (error) {
+    yield put(deleteRegionFailed(error));
+  }
+}
+
+export { handleRegion, createRegion, deleteRegion };

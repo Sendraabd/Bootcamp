@@ -4,7 +4,7 @@ import config from "../config/config";
 const regionApi = {
   list: async () => {
     try {
-      const result = await axios.get(`${config.domain}/region`);
+      const result = await axios.get(`${config.domain}/regions`);
       return result.data;
     } catch (error) {
       return error.message;
@@ -13,7 +13,7 @@ const regionApi = {
 
   deleted: async (id) => {
     try {
-      const result = await axios.delete(`${config.domain}/region/${id}`);
+      const result = await axios.delete(`${config.domain}/regions/${id}`);
       return result;
     } catch (error) {
       return error.message;
@@ -22,7 +22,7 @@ const regionApi = {
 
   create: async (payload) => {
     try {
-      const result = await axios.post(`${config.domain}/region`, payload);
+      const result = await axios.post(`${config.domain}/regions`, payload);
       return result;
     } catch (error) {
       return error.message;
@@ -31,7 +31,7 @@ const regionApi = {
 
   updated: async (payload, id) => {
     try {
-      const result = await axios.put(`${config.domain}/region/${id}`, payload);
+      const result = await axios.put(`${config.domain}/regions/${id}`, payload);
       return result;
     } catch (error) {
       return error.message;
@@ -41,7 +41,7 @@ const regionApi = {
   upload: async (payload) => {
     try {
       const result = await axios.post(
-        `${config.domain}/region/upload`,
+        `${config.domain}/regions/upload`,
         payload
       );
       return result;

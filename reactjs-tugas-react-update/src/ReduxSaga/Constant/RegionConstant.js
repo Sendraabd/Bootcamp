@@ -5,3 +5,7 @@ export const GET_REGION_FAILED = "region/get/failed";
 export const ADD_REGION_REQUEST = "region/add/request";
 export const ADD_REGION_SUCCESS = "region/add/success";
 export const ADD_REGION_FAILED = "region/add/failed";
+
+export const DELETE_REGION_REQUEST = "region/delete/request";
+export const DELETE_REGION_SUCCES = "region/delete/success";
+export const DELETE_REGION_FAILED = "region/delete/failed";

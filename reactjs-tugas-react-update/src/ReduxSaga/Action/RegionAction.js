@@ -15,7 +15,7 @@ export const GetRegionFailed = (payload) => ({
 });
 
 export const AddRegionRequest = (payload) => ({
-  type: ActionType.ADD_REGION_REQUEST,
+  type: ActionType.DELETE_REGION_REQUEST,
   payload,
 });
 
@@ -27,4 +27,19 @@ export const AddRegionSuccess = (payload) => ({
 export const AddRegionFailed = (payload) => ({
   type: ActionType.ADD_REGION_FAILED,
   payload,
+});
+
+export const deleteRegionRequest = (id) => ({
+  type: ActionType.DELETE_REGION_REQUEST,
+  id,
+});
+
+export const deleteRegionSuccess = (id) => ({
+  type: ActionType.DELETE_REGION_SUCCES,
+  id,
+});
+
+export const deleteRegionFailed = (id) => ({
+  type: ActionType.DELETE_REGION_FAILED,
+  id,
 });
