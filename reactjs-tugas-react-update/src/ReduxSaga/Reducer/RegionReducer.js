@@ -16,7 +16,7 @@ const RegionReducer = (state = INIT_STATE, action) => {
       return AddRegionSuccessfully(state, action);
     case ActionType.DELETE_REGION_REQUEST:
       return { ...state };
-    case ActionType.DELETE_REGION_SUCCES:
+    case ActionType.DELETE_REGION_SUCCESS:
       return deleteRegionSuccessfully(state, action);
     default:
       return { ...state };

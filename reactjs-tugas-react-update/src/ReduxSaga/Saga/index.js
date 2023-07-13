@@ -1,6 +1,6 @@
 import { takeEvery, all } from "redux-saga/effects";
 import * as ActionRegion from "../Constant/RegionConstant";
-import { createRegion, handleRegion, deleteRegion } from "./RegionSaga";
+import { createRegion, deleteRegion, handleRegion } from "./RegionSaga";
 
 function* watchAll() {
   yield all([

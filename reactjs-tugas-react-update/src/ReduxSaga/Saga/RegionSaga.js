@@ -30,8 +30,8 @@ function* createRegion(action) {
 function* deleteRegion(action) {
   const { id } = action;
   try {
-    const result = yield call(RegionApi.deleted, id);
-    yield put(deleteRegionSuccess(result.data));
+    yield call(RegionApi.deleted, id);
+    yield put(deleteRegionSuccess(id));
   } catch (error) {
     yield put(deleteRegionFailed(error));
   }

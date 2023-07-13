@@ -18,7 +18,7 @@ export default function RegionSagaView() {
   const onDelete = (id) => {
     dispatch(deleteRegionRequest(id));
     window.alert("Data Successfully Deleted");
-    setRefresh(true);
+    setRefresh((prevRefresh) => !prevRefresh);
     setDisplay(false);
   };
 
@@ -31,9 +31,13 @@ export default function RegionSagaView() {
           <h2>List Regions</h2>
           <button onClick={() => setDisplay(true)}>Add Region</button>
           <table>
-            <th>Region ID</th>
-            <th>Region Name</th>
-            <th>Action</th>
+            <thead>
+              <tr>
+                <th>Region ID</th>
+                <th>Region Name</th>
+                <th>Action</th>
+              </tr>
+            </thead>
             <tbody>
               {regions &&
                 regions.map((reg) => (

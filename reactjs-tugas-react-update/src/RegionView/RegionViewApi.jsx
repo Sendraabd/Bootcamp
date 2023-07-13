@@ -12,10 +12,7 @@ export default function RegionViewApi() {
   const [val, setVal] = useState("");
 
   useEffect(() => {
-    RegionApi.list().then((data) => {
-      setRegion(data);
-    });
-    setRefresh(false);
+    dispatch(GetRegionRequest());
   }, [refresh]);
 
   const onDelete = async (id) => {

@@ -9,7 +9,7 @@ export default function FormikSagaRegion(props) {
   const [upload, setUpload] = useState(false);
   const formik = useFormik({
     initialValues: {
-      name: undefined,
+      name: " ",
       file: undefined,
     },
     onSubmit: async (values) => {
