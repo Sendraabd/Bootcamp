@@ -5,11 +5,15 @@ import {
   deleteRegionRequest,
 } from "../ReduxSaga/Action/RegionAction";
 import FormikSagaRegion from "./FormikSagaRegion";
+import EditSagaRegion from "./EditSagaRegions";
 export default function RegionSagaView() {
   const dispatch = useDispatch();
   const { regions } = useSelector((state) => state.regionState);
   const [display, setDisplay] = useState(false);
   const [refresh, setRefresh] = useState(false);
+  const [edit, setEdit] = useState(false);
+  const [id, setId] = useState();
+  const [val, setVal] = useState("");
 
   useEffect(() => {
     dispatch(GetRegionRequest());
@@ -18,7 +22,7 @@ export default function RegionSagaView() {
   const onDelete = (id) => {
     dispatch(deleteRegionRequest(id));
     window.alert("Data Successfully Deleted");
-    setRefresh((prevRefresh) => !prevRefresh);
+    setRefresh(true);
     setDisplay(false);
   };
 
@@ -26,6 +30,13 @@ export default function RegionSagaView() {
     <div>
       {display ? (
         <FormikSagaRegion setDisplay={setDisplay} setRefresh={setRefresh} />
+      ) : edit ? (
+        <EditSagaRegion
+          setEdit={setEdit}
+          setRefresh={setRefresh}
+          setVal={val}
+          setId={id}
+        />
       ) : (
         <>
           <h2>List Regions</h2>
@@ -45,6 +56,15 @@ export default function RegionSagaView() {
                     <td>{reg.regionId}</td>
                     <td>{reg.regionName}</td>
                     <td>
+                      <button
+                        onClick={() => {
+                          setEdit(true);
+                          setVal(reg.regionName);
+                          setId(reg.regionId);
+                        }}
+                      >
+                        Edit
+                      </button>
                       <button onClick={() => onDelete(reg.regionId)}>
                         Delete
                       </button>

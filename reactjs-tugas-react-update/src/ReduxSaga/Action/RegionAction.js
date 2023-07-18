@@ -43,3 +43,19 @@ export const deleteRegionFailed = (id) => ({
   type: ActionType.DELETE_REGION_FAILED,
   id,
 });
+
+export const UpdateRegionRequest = (payload, id) => ({
+  type: ActionType.UPDATE_REGION_REQUEST,
+  payload,
+  id,
+});
+
+export const UpdateRegionSuccess = (payload) => ({
+  type: ActionType.UPDATE_REGION_SUCCESS,
+  payload,
+});
+
+export const UpdateRegionFailed = (payload) => ({
+  type: ActionType.UPDATE_REGION_FAILED,
+  payload,
+});

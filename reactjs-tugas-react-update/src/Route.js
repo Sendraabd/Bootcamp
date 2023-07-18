@@ -3,6 +3,8 @@ import { Navigate, useRoutes } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import RegionSagaView from "./ViewReduxSaga/RegionSagaView";
 import RegionViewApi from "./RegionView/RegionViewApi";
+import Signin from "./User/Signin";
+import Signup from "./User/Signup";
 export default function Route() {
   return useRoutes([
     {
@@ -11,6 +13,8 @@ export default function Route() {
       children: [
         { path: "/api", element: <RegionViewApi /> },
         { path: "/saga", element: <RegionSagaView /> },
+        { path: "/login", element: <Signin /> },
+        { path: "/signup", element: <Signup /> },
       ],
     },
     {

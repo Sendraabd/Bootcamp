@@ -5,6 +5,8 @@ const navigate = [
   { name: "Dashboard", href: "/", current: true },
   { name: "Region Api", href: "/api", current: false },
   { name: "Region Saga", href: "/saga", current: false },
+  { name: "signin", href: "/login", current: false },
+  { name: "signup", href: "/signup", current: false },
 ];
 export default function Dashboard() {
   return (
